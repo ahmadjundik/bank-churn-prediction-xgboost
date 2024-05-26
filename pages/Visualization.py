@@ -418,3 +418,6 @@ elif attribute == 'Total Transaction Count':
         st.plotly_chart(box_fig, use_container_width=True)
 
 
+if __name__ == "__main__":
+    main()
+
