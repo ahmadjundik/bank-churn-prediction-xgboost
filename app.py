@@ -3,7 +3,7 @@ from PIL import Image
 
 def main():
     st.title("Bank Customer Churn Prediction and Visualization")
-    image = Image.open('/content/churn bank prediction.png')
+    image = Image.open('churn bank prediction.png')
     st.image(image)
     #st.sidebar.title("Navigation")
     #st.sidebar.markdown("[Prediction](Prediction)", unsafe_allow_html=True)
