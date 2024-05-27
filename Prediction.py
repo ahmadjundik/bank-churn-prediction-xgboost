@@ -8,10 +8,10 @@ from PIL import Image
 import numpy as np
 
 # Load the model
-model = load('xgboost_model.joblib')  # Adjust the path as necessary
+model = load('/content/xgboost_model.joblib')  # Adjust the path as necessary
 smote = SMOTE(random_state=42)
 
-image2 = Image.open('visual.png')
+image2 = Image.open('/content/visual.png')
 st.sidebar.image(image2)
 
 def standardize_features(df):
@@ -20,8 +20,8 @@ def standardize_features(df):
     return pd.DataFrame(sc.fit_transform(df), columns=df.columns)
 
 def preprocess(df):
-    df = df.drop(columns = ['Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_1',
-                        'Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_2'])
+    df = df.drop(columns=['Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_1',
+                          'Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_2'])
     df.drop(columns=['CLIENTNUM'], inplace=True)
 
     replace_un = {'Unknown': np.nan}
@@ -30,8 +30,8 @@ def preprocess(df):
     imp1 = SimpleImputer(strategy="most_frequent")
     df[['Education_Level']] = imp1.fit_transform(df[['Education_Level']])
 
-    educt_lavel = {'Uneducated':0, 'High School':1, 'College':2,
-              'Graduate':3, 'Post-Graduate':4, 'Doctorate':5}
+    educt_lavel = {'Uneducated': 0, 'High School': 1, 'College': 2,
+                   'Graduate': 3, 'Post-Graduate': 4, 'Doctorate': 5}
     df.replace(educt_lavel, inplace=True)
 
     df['Marital_Status'].replace(replace_un, inplace=True)
@@ -39,7 +39,7 @@ def preprocess(df):
     imp2 = SimpleImputer(strategy="most_frequent")
     df[['Marital_Status']] = imp2.fit_transform(df[['Marital_Status']])
 
-    marital_status = {'Single':0, 'Married':1, 'Divorced':2}
+    marital_status = {'Single': 0, 'Married': 1, 'Divorced': 2}
     df.replace(marital_status, inplace=True)
 
     df['Income_Category'].replace(replace_un, inplace=True)
@@ -48,16 +48,16 @@ def preprocess(df):
     df[['Income_Category']] = imp3.fit_transform(df[['Income_Category']])
 
     income_cat = {'Less than $40K': 0, '$40K - $60K': 1, '$60K - $80K': 2,
-                '$80K - $120K': 3, '$120K +': 4}
+                  '$80K - $120K': 3, '$120K +': 4}
     df.replace(income_cat, inplace=True)
 
-    att_flag = {'Existing Customer':0, 'Attrited Customer':1}
+    att_flag = {'Existing Customer': 0, 'Attrited Customer': 1}
     df['Attrition_Flag'].replace(att_flag, inplace=True)
 
-    gender = {'F':0, 'M':1}
+    gender = {'F': 0, 'M': 1}
     df['Gender'].replace(gender, inplace=True)
 
-    card_cat = {'Blue':0, 'Silver':1, 'Gold':2, 'Platinum':3}
+    card_cat = {'Blue': 0, 'Silver': 1, 'Gold': 2, 'Platinum': 3}
     df['Card_Category'].replace(card_cat, inplace=True)
 
     df = standardize_features(df)
@@ -76,7 +76,6 @@ def main():
         if 'Attrition_Flag' in processed_data.columns:
             processed_data.drop(columns=['Attrition_Flag'], inplace=True)
 
-        processed_data = standardize_features(processed_data)
         predictions = model.predict(processed_data)
         prediction_probs = model.predict_proba(processed_data)[:, 1]
 
@@ -89,8 +88,15 @@ def main():
         st.subheader("Characteristics of Churn Customers:")
         churn_customers = input_df[input_df['Churn Prediction'] == 1]
 
+        # Drop the 'Attrition_Flag' column if it exists
+        if 'Attrition_Flag' in churn_customers.columns:
+            churn_customers = churn_customers.drop(columns=['Attrition_Flag'])
+
         num_churn_customers = churn_customers.shape[0]
         st.write(f"Number of Churn Customers: {num_churn_customers}")
+
+        st.write("Data of Churn Customers:")
+        st.dataframe(churn_customers)
 
         st.write(churn_customers.describe())
 
