@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
-import prediction
-import visualization
+import Prediction
+import Visualization
 
 def main():
     st.sidebar.title("Navigasi")
