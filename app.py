@@ -32,9 +32,9 @@ def main():
         """
         st.write(dataset)
     elif page == "Prediksi":
-        prediction.main()
+        Prediction.main()
     elif page == "Visualisasi":
-        visualization.main()
+        Visualization.main()
 
 if __name__ == "__main__":
     main()
