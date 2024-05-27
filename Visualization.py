@@ -417,7 +417,3 @@ elif attribute == 'Total Transaction Count':
                          title='Box Plot of Total Transaction Counts')
         st.plotly_chart(box_fig, use_container_width=True)
 
-
-if __name__ == "__main__":
-    main()
-
