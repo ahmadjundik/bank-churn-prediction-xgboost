@@ -3,7 +3,7 @@ from PIL import Image
 
 def main():
    st.title("Bank Customer Churn Prediction and Visualization")
-    image = Image.open('/content/churn bank prediction.png')
+    image = Image.open('churn bank prediction.png')
     st.image(image)
     st.write("**Pendahuluan**")
     latar_belakang = """
