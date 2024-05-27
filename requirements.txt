@@ -8,6 +8,4 @@ numpy
 matplotlib
 seaborn
 plotly
-imblearn
-sklearn_utils
 
