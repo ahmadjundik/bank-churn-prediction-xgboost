@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Hapus environment virtual yang ada
 rm -rf venv
 
