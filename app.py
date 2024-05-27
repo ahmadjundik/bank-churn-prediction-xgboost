@@ -2,7 +2,7 @@ import streamlit as st
 from PIL import Image
 
 def main():
-   st.title("Bank Customer Churn Prediction and Visualization")
+    st.title("Bank Customer Churn Prediction and Visualization")
     image = Image.open('churn bank prediction.png')
     st.image(image)
     st.write("**Pendahuluan**")
