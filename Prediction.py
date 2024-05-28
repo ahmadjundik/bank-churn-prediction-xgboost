@@ -81,10 +81,7 @@ if uploaded_file is not None:
     input_df['Churn Prediction'] = predictions
     input_df['Prediction Probability'] = prediction_probs
 
-    st.write("Combined Data with Predictions:")
-    st.dataframe(input_df)
-
-    st.subheader("Characteristics of Churn Customers:")
+    st.write("Data of Churn Customers:")
     churn_customers = input_df[input_df['Churn Prediction'] == 1]
 
     if 'Attrition_Flag' in churn_customers.columns:
@@ -100,3 +97,4 @@ if uploaded_file is not None:
 
 else:
     st.write("Please upload a file to get predictions.")
+
