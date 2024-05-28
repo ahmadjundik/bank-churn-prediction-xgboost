@@ -6,6 +6,14 @@ from sklearn.impute import SimpleImputer
 from joblib import load
 from imblearn.over_sampling import SMOTE
 from PIL import Image
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
+from sklearn.ensemble import AdaBoostClassifier
+from sklearn.ensemble import ExtraTreesClassifier
+from sklearn.ensemble import GradientBoostingClassifier
 
 # Load the model
 model = load('xgboost_model.joblib')  # Adjust the path as necessary
