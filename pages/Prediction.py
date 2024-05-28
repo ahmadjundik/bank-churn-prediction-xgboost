@@ -84,7 +84,7 @@ if st.session_state['uploaded_file'] is not None:
     st.write("Combined Data with Predictions:")
     st.dataframe(input_df)
 
-    st.subheader("Characteristics of Churn Customers:")
+    
     churn_customers = input_df[input_df['Churn Prediction'] == 1]
 
     if 'Attrition_Flag' in churn_customers.columns:
@@ -93,9 +93,10 @@ if st.session_state['uploaded_file'] is not None:
     num_churn_customers = churn_customers.shape[0]
     st.write(f"Number of Churn Customers: {num_churn_customers}")
 
-    st.write("Data of Churn Customers:")
+    st.subheader("Data of Churn Customers:")
     st.dataframe(churn_customers)
 
+    st.subheader("Characteristics of Churn Customers:")
     st.write(churn_customers.describe())
 else:
     st.write("Please upload a file to get predictions.")
