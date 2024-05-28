@@ -317,4 +317,3 @@ elif attribute == 'Avg Utilization Ratio':
         hist_fig.update_layout(xaxis_title='Avg Utilization Ratio', yaxis_title='Count of Customers',
                                legend_title="Churn Status")
         st.plotly_chart(hist_fig, use_container_width=True)
-
