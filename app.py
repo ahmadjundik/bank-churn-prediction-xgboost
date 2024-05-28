@@ -25,6 +25,3 @@ def main():
     bernama XGBoost.
     """
     st.write(dataset)
-
-if __name__ == "__main__":
-    main()
