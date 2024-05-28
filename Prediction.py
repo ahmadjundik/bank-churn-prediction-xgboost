@@ -6,14 +6,6 @@ from sklearn.impute import SimpleImputer
 from joblib import load
 from imblearn.over_sampling import SMOTE
 from PIL import Image
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-from sklearn.ensemble import RandomForestClassifier
-from xgboost import XGBClassifier
-from sklearn.ensemble import AdaBoostClassifier
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.ensemble import GradientBoostingClassifier
 
 # Load the model
 model = load('xgboost_model.joblib')  # Adjust the path as necessary
@@ -66,10 +58,16 @@ def preprocess(df):
 st.title("Bank Customer Churn Prediction")
 st.write("Upload a CSV file for prediction.")
 
+if 'uploaded_file' not in st.session_state:
+    st.session_state['uploaded_file'] = None
+
 uploaded_file = st.file_uploader("Upload your input CSV file", type=["csv"])
 
 if uploaded_file is not None:
-    input_df = pd.read_csv(uploaded_file)
+    st.session_state['uploaded_file'] = uploaded_file
+
+if st.session_state['uploaded_file'] is not None:
+    input_df = pd.read_csv(st.session_state['uploaded_file'])
     processed_data = preprocess(input_df)
 
     # Save Attrition_Flag for later use
@@ -101,4 +99,5 @@ if uploaded_file is not None:
     st.write(churn_customers.describe())
 else:
     st.write("Please upload a file to get predictions.")
+
 
