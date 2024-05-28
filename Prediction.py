@@ -72,7 +72,9 @@ if uploaded_file is not None:
     input_df = pd.read_csv(uploaded_file)
     processed_data = preprocess(input_df)
 
+    # Save Attrition_Flag for later use
     if 'Attrition_Flag' in processed_data.columns:
+        attrition_flag = input_df['Attrition_Flag']
         processed_data.drop(columns=['Attrition_Flag'], inplace=True)
 
     predictions = model.predict(processed_data)
@@ -81,7 +83,10 @@ if uploaded_file is not None:
     input_df['Churn Prediction'] = predictions
     input_df['Prediction Probability'] = prediction_probs
 
-    st.write("Data of Churn Customers:")
+    st.write("Combined Data with Predictions:")
+    st.dataframe(input_df)
+
+    st.subheader("Characteristics of Churn Customers:")
     churn_customers = input_df[input_df['Churn Prediction'] == 1]
 
     if 'Attrition_Flag' in churn_customers.columns:
@@ -94,7 +99,6 @@ if uploaded_file is not None:
     st.dataframe(churn_customers)
 
     st.write(churn_customers.describe())
-
 else:
     st.write("Please upload a file to get predictions.")
 
