@@ -5,7 +5,7 @@ def main():
     st.title("Bank Customer Churn Prediction and Visualization")
     image = Image.open('churn bank prediction.png')
     st.image(image)
-    st.write("**Pendahuluan**")
+    st.header("**Pendahuluan**")
     latar_belakang = """
     Dalam era digital, industri perbankan menghadapi peningkatan churn, yaitu 
     kehilangan pelanggan ke bank lain, akibat persaingan ketat, perubahan preferensi 
@@ -17,7 +17,7 @@ def main():
     nasabah dan mempertahankan pelanggan berharga.
     """
     st.write(latar_belakang)
-    st.write("**Dataset dan Machine Learning**")
+    st.header("**Dataset dan Machine Learning**")
     dataset = """
     Dataset yang kami gunakan berasal dari sumber data Kaggle. Kami memilih dataset 
     bernama “ Bank Churn Data Exploration And Churn Prediction ”.
