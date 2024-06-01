@@ -84,6 +84,9 @@ if uploaded_file is not None:
     if 'Attrition_Flag' in churn_customers.columns:
         churn_customers = churn_customers.drop(columns=['Attrition_Flag'])
 
+    if 'Prediction Probability' in churn_customers.columns:
+        churn_customers = churn_customers.drop(columns=['Prediction Probability'])
+
     num_churn_customers = churn_customers.shape[0]
     st.write(f"Number of Churn Customers: {num_churn_customers}")
 
