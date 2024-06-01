@@ -8,10 +8,10 @@ import plotly.express as px
 st.title("Bank Customer Churn Visualization")
 
 def load_data(uploaded_file):
-    data = pd.read_csv(uploaded_file)
+    data = pd.read_csv(uploaded_file, delimiter='\t')
     
-    #data['Churn'] = data['Attrition_Flag'].apply(lambda x: 1 if x == 'Attrited Customer' else 0):
-    #return data
+    data['Churn'] = data['Attrition_Flag'].apply(lambda x: 1 if x == 'Attrited Customer' else 0):
+    return data
 
 uploaded_file = st.file_uploader("Choose a file", type=["csv", "txt"])
 
