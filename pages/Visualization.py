@@ -280,7 +280,7 @@ if uploaded_file:
                            legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
 
-   elif attribute == 'Average Utilization Ratio' and 'Avg_Utilization_Ratio' in df.columns:
+     elif attribute == 'Average Utilization Ratio' and 'Avg_Utilization_Ratio' in df.columns:
         utilization_ratio_selection = st.sidebar.slider('Select Average Utilization Ratio Range:', min_value=float(df['Avg_Utilization_Ratio'].min()), max_value=float(df['Avg_Utilization_Ratio'].max()), value=(float(df['Avg_Utilization_Ratio'].min()), float(df['Avg_Utilization_Ratio'].max())))
         df_filtered = df[(df['Avg_Utilization_Ratio'] >= utilization_ratio_selection[0]) & (df['Avg_Utilization_Ratio'] <= utilization_ratio_selection[1])]
         st.title("Dashboard Customer Churn by Average Utilization Ratio")
