@@ -162,16 +162,17 @@ if uploaded_file:
         months_selection = st.sidebar.slider('Select Months on Book Range:', min_value=int(df['Months_on_book'].min()), max_value=int(df['Months_on_book'].max()), value=(int(df['Months_on_book'].min()), int(df['Months_on_book'].max())))
         df_filtered = df[(df['Months_on_book'] >= months_selection[0]) & (df['Months_on_book'] <= months_selection[1])]
         st.title("Dashboard Customer Churn by Months on Book")
-        
-        hist_fig = px.histogram(df_filtered, x='Months_on_book', color='Churn Status',
-                                labels={'Months_on_book': 'Months on Book', 'Churn Status': 'Churn Status'},
-                                title='Customer Churn by Months on Book',
-                                barmode='stack',
-                                nbins=int(df['Months_on_book'].max() - df['Months_on_book'].min())
-                               )
+    
+        hist_fig = px.histogram(df_filtered, x='Months_on_book', color='Attrition_Flag',
+                            labels={'Months_on_book': 'Months on Book', 'Attrition_Flag': 'Attrition Flag'},
+                            title='Customer Churn by Months on Book',
+                            barmode='stack',
+                            nbins=int(df['Months_on_book'].max() - df['Months_on_book'].min())
+                           )
         hist_fig.update_layout(xaxis_title='Months on Book', yaxis_title='Count of Customers',
-                               legend_title="Churn Status")
+                           legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
+
 
     elif attribute == 'Total Relationship Count' and 'Total_Relationship_Count' in df.columns:
         relationship_count_selection = st.sidebar.slider('Select Total Relationship Count Range:', min_value=int(df['Total_Relationship_Count'].min()), max_value=int(df['Total_Relationship_Count'].max()), value=(int(df['Total_Relationship_Count'].min()), int(df['Total_Relationship_Count'].max())))
