@@ -177,15 +177,15 @@ if uploaded_file:
         relationship_count_selection = st.sidebar.slider('Select Total Relationship Count Range:', min_value=int(df['Total_Relationship_Count'].min()), max_value=int(df['Total_Relationship_Count'].max()), value=(int(df['Total_Relationship_Count'].min()), int(df['Total_Relationship_Count'].max())))
         df_filtered = df[(df['Total_Relationship_Count'] >= relationship_count_selection[0]) & (df['Total_Relationship_Count'] <= relationship_count_selection[1])]
         st.title("Dashboard Customer Churn by Total Relationship Count")
-        
-        hist_fig = px.histogram(df_filtered, x='Total_Relationship_Count', color='Churn Status',
-                                labels={'Total_Relationship_Count': 'Total Relationship Count', 'Churn Status': 'Churn Status'},
-                                title='Customer Churn by Total Relationship Count',
-                                barmode='stack',
-                                nbins=int(df['Total_Relationship_Count'].max() - df['Total_Relationship_Count'].min())
-                               )
+    
+        hist_fig = px.histogram(df_filtered, x='Total_Relationship_Count', color='Attrition_Flag',
+                            labels={'Total_Relationship_Count': 'Total Relationship Count', 'Attrition_Flag': 'Attrition Flag'},
+                            title='Customer Churn by Total Relationship Count',
+                            barmode='stack',
+                            nbins=int(df['Total_Relationship_Count'].max() - df['Total_Relationship_Count'].min())
+                           )
         hist_fig.update_layout(xaxis_title='Total Relationship Count', yaxis_title='Count of Customers',
-                               legend_title="Churn Status")
+                           legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
 
     elif attribute == 'Months Inactive 12 Mon' and 'Months_Inactive_12_mon' in df.columns:
