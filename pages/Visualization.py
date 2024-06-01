@@ -194,7 +194,7 @@ if uploaded_file:
         st.title("Dashboard Customer Churn by Months Inactive in Last 12 Months")
         
         hist_fig = px.histogram(df_filtered, x='Months_Inactive_12_mon', color='Churn Status',
-                                labels={'Months_Inactive_12_mon': 'Months Inactive in Last 12 Months', 'Churn Status': 'Churn Status'},
+                                labels={'Months_Inactive_12_mon': 'Months Inactive in Last 12 Months', 'Attrition_Flag': 'Attrition Flag'},
                                 title='Customer Churn by Months Inactive in Last 12 Months',
                                 barmode='stack',
                                 nbins=int(df['Months_Inactive_12_mon'].max() - df['Months_Inactive_12_mon'].min())
@@ -209,7 +209,7 @@ if uploaded_file:
         st.title("Dashboard Customer Churn by Contacts Count in Last 12 Months")
         
         hist_fig = px.histogram(df_filtered, x='Contacts_Count_12_mon', color='Churn Status',
-                                labels={'Contacts_Count_12_mon': 'Contacts Count in Last 12 Months', 'Churn Status': 'Churn Status'},
+                                labels={'Contacts_Count_12_mon': 'Contacts Count in Last 12 Months', 'Attrition_Flag': 'Attrition Flag'},
                                 title='Customer Churn by Contacts Count in Last 12 Months',
                                 barmode='stack',
                                 nbins=int(df['Contacts_Count_12_mon'].max() - df['Contacts_Count_12_mon'].min())
@@ -224,7 +224,7 @@ if uploaded_file:
         st.title("Dashboard Customer Churn by Credit Limit")
         
         hist_fig = px.histogram(df_filtered, x='Credit_Limit', color='Churn Status',
-                                labels={'Credit_Limit': 'Credit Limit', 'Churn Status': 'Churn Status'},
+                                labels={'Credit_Limit': 'Credit Limit', 'Attrition_Flag': 'Attrition Flag'},
                                 title='Customer Churn by Credit Limit',
                                 barmode='stack',
                                 nbins=int(df['Credit_Limit'].max() - df['Credit_Limit'].min())
@@ -239,7 +239,7 @@ if uploaded_file:
         st.title("Dashboard Customer Churn by Total Revolving Balance")
         
         hist_fig = px.histogram(df_filtered, x='Total_Revolving_Bal', color='Churn Status',
-                                labels={'Total_Revolving_Bal': 'Total Revolving Balance', 'Churn Status': 'Churn Status'},
+                                labels={'Total_Revolving_Bal': 'Total Revolving Balance', 'Attrition_Flag': 'Attrition Flag'},
                                 title='Customer Churn by Total Revolving Balance',
                                 barmode='stack',
                                 nbins=int(df['Total_Revolving_Bal'].max() - df['Total_Revolving_Bal'].min())
@@ -254,7 +254,7 @@ if uploaded_file:
         st.title("Dashboard Customer Churn by Total Transaction Amount")
         
         hist_fig = px.histogram(df_filtered, x='Total_Trans_Amt', color='Churn Status',
-                                labels={'Total_Trans_Amt': 'Total Transaction Amount', 'Churn Status': 'Churn Status'},
+                                labels={'Total_Trans_Amt': 'Total Transaction Amount', 'Attrition_Flag': 'Attrition Flag'},
                                 title='Customer Churn by Total Transaction Amount',
                                 barmode='stack',
                                 nbins=int(df['Total_Trans_Amt'].max() - df['Total_Trans_Amt'].min())
@@ -269,7 +269,7 @@ if uploaded_file:
         st.title("Dashboard Customer Churn by Total Transaction Count")
         
         hist_fig = px.histogram(df_filtered, x='Total_Trans_Ct', color='Churn Status',
-                                labels={'Total_Trans_Ct': 'Total Transaction Count', 'Churn Status': 'Churn Status'},
+                                labels={'Total_Trans_Ct': 'Total Transaction Count', 'Attrition_Flag': 'Attrition Flag'},
                                 title='Customer Churn by Total Transaction Count',
                                 barmode='stack',
                                 nbins=int(df['Total_Trans_Ct'].max() - df['Total_Trans_Ct'].min())
@@ -284,7 +284,7 @@ if uploaded_file:
         st.title("Dashboard Customer Churn by Average Utilization Ratio")
         
         hist_fig = px.histogram(df_filtered, x='Avg_Utilization_Ratio', color='Churn Status',
-                                labels={'Avg_Utilization_Ratio': 'Average Utilization Ratio', 'Churn Status': 'Churn Status'},
+                                labels={'Avg_Utilization_Ratio': 'Average Utilization Ratio', 'Attrition_Flag': 'Attrition Flag'},
                                 title='Customer Churn by Average Utilization Ratio',
                                 barmode='stack',
                                 nbins=int(df['Avg_Utilization_Ratio'].max() - df['Avg_Utilization_Ratio'].min())
