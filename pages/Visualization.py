@@ -10,16 +10,14 @@ st.title("Bank Customer Churn Visualization")
 def load_data(uploaded_file):
     try:
         data = pd.read_csv(uploaded_file, delimiter='\t')
+        if 'Attrition_Flag' not in data.columns:
+            st.error("The dataset does not contain the 'Attrition_Flag' column.")
+            return None
+        data['Churn'] = data['Attrition_Flag'].apply(lambda x: 1 if x == 'Attrited Customer' else 0)
+        return data
     except Exception as e:
         st.error(f"Error loading data: {e}")
         return None
-    
-    if 'Attrition_Flag' not in data.columns:
-        st.error("The dataset does not contain the 'Attrition_Flag' column.")
-        return None
-
-    data['Churn'] = data['Attrition_Flag'].apply(lambda x: 1 if x == 'Attrited Customer' else 0)
-    return data
 
 uploaded_file = st.file_uploader("Choose a file", type=["csv", "txt"])
 
