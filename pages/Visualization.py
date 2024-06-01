@@ -280,20 +280,20 @@ if uploaded_file:
                            legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
 
-     elif attribute == 'Average Utilization Ratio' and 'Avg_Utilization_Ratio' in df.columns:
-        utilization_ratio_selection = st.sidebar.slider('Select Average Utilization Ratio Range:', min_value=float(df['Avg_Utilization_Ratio'].min()), max_value=float(df['Avg_Utilization_Ratio'].max()), value=(float(df['Avg_Utilization_Ratio'].min()), float(df['Avg_Utilization_Ratio'].max())))
-        df_filtered = df[(df['Avg_Utilization_Ratio'] >= utilization_ratio_selection[0]) & (df['Avg_Utilization_Ratio'] <= utilization_ratio_selection[1])]
-        st.title("Dashboard Customer Churn by Average Utilization Ratio")
+    #elif attribute == 'Average Utilization Ratio' and 'Avg_Utilization_Ratio' in df.columns:
+    #   utilization_ratio_selection = st.sidebar.slider('Select Average Utilization Ratio Range:', min_value=float(df['Avg_Utilization_Ratio'].min()), max_value=float(df['Avg_Utilization_Ratio'].max()), value=(float(df['Avg_Utilization_Ratio'].min()), float(df['Avg_Utilization_Ratio'].max())))
+    #    df_filtered = df[(df['Avg_Utilization_Ratio'] >= utilization_ratio_selection[0]) & (df['Avg_Utilization_Ratio'] <= utilization_ratio_selection[1])]
+    #    st.title("Dashboard Customer Churn by Average Utilization Ratio")
     
-        hist_fig = px.histogram(df_filtered, x='Avg_Utilization_Ratio', color='Attrition_Flag',
-                            labels={'Avg_Utilization_Ratio': 'Average Utilization Ratio', 'Attrition_Flag': 'Attrition Flag'},
-                            title='Customer Churn by Average Utilization Ratio',
-                            barmode='stack',
-                            nbins=int(df['Avg_Utilization_Ratio'].max() - df['Avg_Utilization_Ratio'].min())
-                            )
-        hist_fig.update_layout(xaxis_title='Average Utilization Ratio', yaxis_title='Count of Customers',
-                            legend_title="Attrition Flag")
-        st.plotly_chart(hist_fig, use_container_width=True)
+    #    hist_fig = px.histogram(df_filtered, x='Avg_Utilization_Ratio', color='Attrition_Flag',
+    #                        labels={'Avg_Utilization_Ratio': 'Average Utilization Ratio', 'Attrition_Flag': 'Attrition Flag'},
+    #                        title='Customer Churn by Average Utilization Ratio',
+    #                        barmode='stack',
+    #                        nbins=int(df['Avg_Utilization_Ratio'].max() - df['Avg_Utilization_Ratio'].min())
+    #                        )
+    #    hist_fig.update_layout(xaxis_title='Average Utilization Ratio', yaxis_title='Count of Customers',
+    #                        legend_title="Attrition Flag")
+    #    st.plotly_chart(hist_fig, use_container_width=True)
 
 
     else:
