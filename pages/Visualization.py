@@ -285,18 +285,15 @@ if uploaded_file:
         df_filtered = df[(df['Avg_Utilization_Ratio'] >= utilization_ratio_selection[0]) & (df['Avg_Utilization_Ratio'] <= utilization_ratio_selection[1])]
         st.title("Dashboard Customer Churn by Average Utilization Ratio")
     
-        if not df_filtered.empty:
-            hist_fig = px.histogram(df_filtered, x='Avg_Utilization_Ratio', color='Attrition_Flag',
-                                labels={'Avg_Utilization_Ratio': 'Average Utilization Ratio', 'Attrition_Flag': 'Attrition Flag'},
-                                title='Customer Churn by Average Utilization Ratio',
-                                barmode='stack',
-                                nbins=int(df['Avg_Utilization_Ratio'].max() - df['Avg_Utilization_Ratio'].min())
-                               )
-            hist_fig.update_layout(xaxis_title='Average Utilization Ratio', yaxis_title='Count of Customers',
-                               legend_title="Attrition Flag")
-            st.plotly_chart(hist_fig, use_container_width=True)
-        else:
-            st.write("No data available for the selected criteria.")
+        hist_fig = px.histogram(df_filtered, x='Avg_Utilization_Ratio', color='Attrition_Flag',
+                            labels={'Avg_Utilization_Ratio': 'Average Utilization Ratio', 'Attrition_Flag': 'Attrition Flag'},
+                            title='Customer Churn by Average Utilization Ratio',
+                            barmode='stack',
+                            nbins=int(df['Avg_Utilization_Ratio'].max() - df['Avg_Utilization_Ratio'].min())
+                            )
+        hist_fig.update_layout(xaxis_title='Average Utilization Ratio', yaxis_title='Count of Customers',
+                            legend_title="Attrition Flag")
+        st.plotly_chart(hist_fig, use_container_width=True)
 
 
     else:
