@@ -298,6 +298,7 @@ if uploaded_file:
         else:
             st.write("No data available for the selected criteria.")
 
+
     else:
         st.title("Customer Churn Dashboard")
         st.write("Please select a valid attribute to visualize.")
