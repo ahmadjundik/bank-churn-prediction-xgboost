@@ -222,16 +222,17 @@ if uploaded_file:
         credit_limit_selection = st.sidebar.slider('Select Credit Limit Range:', min_value=int(df['Credit_Limit'].min()), max_value=int(df['Credit_Limit'].max()), value=(int(df['Credit_Limit'].min()), int(df['Credit_Limit'].max())))
         df_filtered = df[(df['Credit_Limit'] >= credit_limit_selection[0]) & (df['Credit_Limit'] <= credit_limit_selection[1])]
         st.title("Dashboard Customer Churn by Credit Limit")
-        
-        hist_fig = px.histogram(df_filtered, x='Credit_Limit', color='Churn Status',
-                                labels={'Credit_Limit': 'Credit Limit', 'Attrition_Flag': 'Attrition Flag'},
-                                title='Customer Churn by Credit Limit',
-                                barmode='stack',
-                                nbins=int(df['Credit_Limit'].max() - df['Credit_Limit'].min())
-                               )
+    
+        hist_fig = px.histogram(df_filtered, x='Credit_Limit', color='Attrition_Flag',
+                            labels={'Credit_Limit': 'Credit Limit', 'Attrition_Flag': 'Attrition Flag'},
+                            title='Customer Churn by Credit Limit',
+                            barmode='stack',
+                            nbins=int(df['Credit_Limit'].max() - df['Credit_Limit'].min())
+                           )
         hist_fig.update_layout(xaxis_title='Credit Limit', yaxis_title='Count of Customers',
-                               legend_title="Churn Status")
+                           legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
+
 
     elif attribute == 'Total Revolving Balance' and 'Total_Revolving_Bal' in df.columns:
         revolving_balance_selection = st.sidebar.slider('Select Total Revolving Balance Range:', min_value=int(df['Total_Revolving_Bal'].min()), max_value=int(df['Total_Revolving_Bal'].max()), value=(int(df['Total_Revolving_Bal'].min()), int(df['Total_Revolving_Bal'].max())))
