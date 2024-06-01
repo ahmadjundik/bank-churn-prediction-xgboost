@@ -13,7 +13,7 @@ def load_data(uploaded_file):
     data['Churn'] = data['Attrition_Flag'].apply(lambda x: 1 if x == 'Attrited Customer' else 0):
     return data
 
-uploaded_file = st.file_uploader("Choose a file", type=["csv"])
+uploaded_file = st.file_uploader("Choose a file", type=["csv",, "txt"])
 
 if uploaded_file:
     df = load_data(uploaded_file)
