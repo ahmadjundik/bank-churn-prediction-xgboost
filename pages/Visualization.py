@@ -207,15 +207,15 @@ if uploaded_file:
         contacts_count_selection = st.sidebar.slider('Select Contacts Count in Last 12 Months Range:', min_value=int(df['Contacts_Count_12_mon'].min()), max_value=int(df['Contacts_Count_12_mon'].max()), value=(int(df['Contacts_Count_12_mon'].min()), int(df['Contacts_Count_12_mon'].max())))
         df_filtered = df[(df['Contacts_Count_12_mon'] >= contacts_count_selection[0]) & (df['Contacts_Count_12_mon'] <= contacts_count_selection[1])]
         st.title("Dashboard Customer Churn by Contacts Count in Last 12 Months")
-        
-        hist_fig = px.histogram(df_filtered, x='Contacts_Count_12_mon', color='Churn Status',
-                                labels={'Contacts_Count_12_mon': 'Contacts Count in Last 12 Months', 'Attrition_Flag': 'Attrition Flag'},
-                                title='Customer Churn by Contacts Count in Last 12 Months',
-                                barmode='stack',
-                                nbins=int(df['Contacts_Count_12_mon'].max() - df['Contacts_Count_12_mon'].min())
-                               )
+    
+        hist_fig = px.histogram(df_filtered, x='Contacts_Count_12_mon', color='Attrition_Flag',
+                            labels={'Contacts_Count_12_mon': 'Contacts Count in Last 12 Months', 'Attrition_Flag': 'Attrition Flag'},
+                            title='Customer Churn by Contacts Count in Last 12 Months',
+                            barmode='stack',
+                            nbins=int(df['Contacts_Count_12_mon'].max() - df['Contacts_Count_12_mon'].min())
+                           )
         hist_fig.update_layout(xaxis_title='Contacts Count in Last 12 Months', yaxis_title='Count of Customers',
-                               legend_title="Churn Status")
+                           legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
 
     elif attribute == 'Credit Limit' and 'Credit_Limit' in df.columns:
