@@ -238,61 +238,63 @@ if uploaded_file:
         revolving_balance_selection = st.sidebar.slider('Select Total Revolving Balance Range:', min_value=int(df['Total_Revolving_Bal'].min()), max_value=int(df['Total_Revolving_Bal'].max()), value=(int(df['Total_Revolving_Bal'].min()), int(df['Total_Revolving_Bal'].max())))
         df_filtered = df[(df['Total_Revolving_Bal'] >= revolving_balance_selection[0]) & (df['Total_Revolving_Bal'] <= revolving_balance_selection[1])]
         st.title("Dashboard Customer Churn by Total Revolving Balance")
-        
-        hist_fig = px.histogram(df_filtered, x='Total_Revolving_Bal', color='Churn Status',
-                                labels={'Total_Revolving_Bal': 'Total Revolving Balance', 'Attrition_Flag': 'Attrition Flag'},
-                                title='Customer Churn by Total Revolving Balance',
-                                barmode='stack',
-                                nbins=int(df['Total_Revolving_Bal'].max() - df['Total_Revolving_Bal'].min())
-                               )
+    
+        hist_fig = px.histogram(df_filtered, x='Total_Revolving_Bal', color='Attrition_Flag',
+                            labels={'Total_Revolving_Bal': 'Total Revolving Balance', 'Attrition_Flag': 'Attrition Flag'},
+                            title='Customer Churn by Total Revolving Balance',
+                            barmode='stack',
+                            nbins=int(df['Total_Revolving_Bal'].max() - df['Total_Revolving_Bal'].min())
+                           )
         hist_fig.update_layout(xaxis_title='Total Revolving Balance', yaxis_title='Count of Customers',
-                               legend_title="Churn Status")
+                           legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
+
 
     elif attribute == 'Total Transaction Amount' and 'Total_Trans_Amt' in df.columns:
         transaction_amount_selection = st.sidebar.slider('Select Total Transaction Amount Range:', min_value=int(df['Total_Trans_Amt'].min()), max_value=int(df['Total_Trans_Amt'].max()), value=(int(df['Total_Trans_Amt'].min()), int(df['Total_Trans_Amt'].max())))
         df_filtered = df[(df['Total_Trans_Amt'] >= transaction_amount_selection[0]) & (df['Total_Trans_Amt'] <= transaction_amount_selection[1])]
         st.title("Dashboard Customer Churn by Total Transaction Amount")
-        
-        hist_fig = px.histogram(df_filtered, x='Total_Trans_Amt', color='Churn Status',
-                                labels={'Total_Trans_Amt': 'Total Transaction Amount', 'Attrition_Flag': 'Attrition Flag'},
-                                title='Customer Churn by Total Transaction Amount',
-                                barmode='stack',
-                                nbins=int(df['Total_Trans_Amt'].max() - df['Total_Trans_Amt'].min())
-                               )
+    
+        hist_fig = px.histogram(df_filtered, x='Total_Trans_Amt', color='Attrition_Flag',
+                            labels={'Total_Trans_Amt': 'Total Transaction Amount', 'Attrition_Flag': 'Attrition Flag'},
+                            title='Customer Churn by Total Transaction Amount',
+                            barmode='stack',
+                            nbins=int(df['Total_Trans_Amt'].max() - df['Total_Trans_Amt'].min())
+                           )
         hist_fig.update_layout(xaxis_title='Total Transaction Amount', yaxis_title='Count of Customers',
-                               legend_title="Churn Status")
+                           legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
 
     elif attribute == 'Total Transaction Count' and 'Total_Trans_Ct' in df.columns:
         transaction_count_selection = st.sidebar.slider('Select Total Transaction Count Range:', min_value=int(df['Total_Trans_Ct'].min()), max_value=int(df['Total_Trans_Ct'].max()), value=(int(df['Total_Trans_Ct'].min()), int(df['Total_Trans_Ct'].max())))
         df_filtered = df[(df['Total_Trans_Ct'] >= transaction_count_selection[0]) & (df['Total_Trans_Ct'] <= transaction_count_selection[1])]
         st.title("Dashboard Customer Churn by Total Transaction Count")
-        
-        hist_fig = px.histogram(df_filtered, x='Total_Trans_Ct', color='Churn Status',
-                                labels={'Total_Trans_Ct': 'Total Transaction Count', 'Attrition_Flag': 'Attrition Flag'},
-                                title='Customer Churn by Total Transaction Count',
-                                barmode='stack',
-                                nbins=int(df['Total_Trans_Ct'].max() - df['Total_Trans_Ct'].min())
-                               )
+    
+        hist_fig = px.histogram(df_filtered, x='Total_Trans_Ct', color='Attrition_Flag',
+                            labels={'Total_Trans_Ct': 'Total Transaction Count', 'Attrition_Flag': 'Attrition Flag'},
+                            title='Customer Churn by Total Transaction Count',
+                            barmode='stack',
+                            nbins=int(df['Total_Trans_Ct'].max() - df['Total_Trans_Ct'].min())
+                           )
         hist_fig.update_layout(xaxis_title='Total Transaction Count', yaxis_title='Count of Customers',
-                               legend_title="Churn Status")
+                           legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
 
     elif attribute == 'Average Utilization Ratio' and 'Avg_Utilization_Ratio' in df.columns:
         utilization_ratio_selection = st.sidebar.slider('Select Average Utilization Ratio Range:', min_value=float(df['Avg_Utilization_Ratio'].min()), max_value=float(df['Avg_Utilization_Ratio'].max()), value=(float(df['Avg_Utilization_Ratio'].min()), float(df['Avg_Utilization_Ratio'].max())))
         df_filtered = df[(df['Avg_Utilization_Ratio'] >= utilization_ratio_selection[0]) & (df['Avg_Utilization_Ratio'] <= utilization_ratio_selection[1])]
         st.title("Dashboard Customer Churn by Average Utilization Ratio")
-        
-        hist_fig = px.histogram(df_filtered, x='Avg_Utilization_Ratio', color='Churn Status',
-                                labels={'Avg_Utilization_Ratio': 'Average Utilization Ratio', 'Attrition_Flag': 'Attrition Flag'},
-                                title='Customer Churn by Average Utilization Ratio',
-                                barmode='stack',
-                                nbins=int(df['Avg_Utilization_Ratio'].max() - df['Avg_Utilization_Ratio'].min())
-                               )
+    
+        hist_fig = px.histogram(df_filtered, x='Avg_Utilization_Ratio', color='Attrition_Flag',
+                            labels={'Avg_Utilization_Ratio': 'Average Utilization Ratio', 'Attrition_Flag': 'Attrition Flag'},
+                            title='Customer Churn by Average Utilization Ratio',
+                            barmode='stack',
+                            nbins=int(df['Avg_Utilization_Ratio'].max() - df['Avg_Utilization_Ratio'].min())
+                           )
         hist_fig.update_layout(xaxis_title='Average Utilization Ratio', yaxis_title='Count of Customers',
-                               legend_title="Churn Status")
+                           legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
+
 
     else:
         st.title("Customer Churn Dashboard")
