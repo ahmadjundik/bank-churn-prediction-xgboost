@@ -73,7 +73,7 @@ if uploaded_file is not None:
     prediction_probs = model.predict_proba(processed_data)[:, 1]
 
     input_df['Churn Prediction'] = predictions
-    input_df['Prediction Probability'] = prediction_probs
+    #input_df['Prediction Probability'] = prediction_probs
 
     st.write("Combined Data with Predictions:")
     st.dataframe(input_df)
