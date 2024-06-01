@@ -58,16 +58,10 @@ def preprocess(df):
 st.title("Bank Customer Churn Prediction")
 st.write("Upload a CSV file for prediction.")
 
-if 'uploaded_file' not in st.session_state:
-    st.session_state['uploaded_file'] = None
-
 uploaded_file = st.file_uploader("Upload your input CSV file", type=["csv"])
 
 if uploaded_file is not None:
-    st.session_state['uploaded_file'] = uploaded_file
-
-if st.session_state['uploaded_file'] is not None:
-    input_df = pd.read_csv(st.session_state['uploaded_file'])
+    input_df = pd.read_csv(uploaded_file)
     processed_data = preprocess(input_df)
 
     # Save Attrition_Flag for later use
