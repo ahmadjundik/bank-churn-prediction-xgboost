@@ -192,15 +192,15 @@ if uploaded_file:
         months_inactive_selection = st.sidebar.slider('Select Months Inactive in Last 12 Months Range:', min_value=int(df['Months_Inactive_12_mon'].min()), max_value=int(df['Months_Inactive_12_mon'].max()), value=(int(df['Months_Inactive_12_mon'].min()), int(df['Months_Inactive_12_mon'].max())))
         df_filtered = df[(df['Months_Inactive_12_mon'] >= months_inactive_selection[0]) & (df['Months_Inactive_12_mon'] <= months_inactive_selection[1])]
         st.title("Dashboard Customer Churn by Months Inactive in Last 12 Months")
-        
-        hist_fig = px.histogram(df_filtered, x='Months_Inactive_12_mon', color='Churn Status',
-                                labels={'Months_Inactive_12_mon': 'Months Inactive in Last 12 Months', 'Attrition_Flag': 'Attrition Flag'},
-                                title='Customer Churn by Months Inactive in Last 12 Months',
-                                barmode='stack',
-                                nbins=int(df['Months_Inactive_12_mon'].max() - df['Months_Inactive_12_mon'].min())
-                               )
+    
+        hist_fig = px.histogram(df_filtered, x='Months_Inactive_12_mon', color='Attrition_Flag',
+                            labels={'Months_Inactive_12_mon': 'Months Inactive in Last 12 Months', 'Attrition_Flag': 'Attrition Flag'},
+                            title='Customer Churn by Months Inactive in Last 12 Months',
+                            barmode='stack',
+                            nbins=int(df['Months_Inactive_12_mon'].max() - df['Months_Inactive_12_mon'].min())
+                           )
         hist_fig.update_layout(xaxis_title='Months Inactive in Last 12 Months', yaxis_title='Count of Customers',
-                               legend_title="Churn Status")
+                           legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
 
     elif attribute == 'Contacts Count 12 mon' and 'Contacts_Count_12_mon' in df.columns:
