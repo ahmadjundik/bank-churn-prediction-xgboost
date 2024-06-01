@@ -173,7 +173,6 @@ if uploaded_file:
                            legend_title="Attrition Flag")
         st.plotly_chart(hist_fig, use_container_width=True)
 
-
     elif attribute == 'Total Relationship Count' and 'Total_Relationship_Count' in df.columns:
         relationship_count_selection = st.sidebar.slider('Select Total Relationship Count Range:', min_value=int(df['Total_Relationship_Count'].min()), max_value=int(df['Total_Relationship_Count'].max()), value=(int(df['Total_Relationship_Count'].min()), int(df['Total_Relationship_Count'].max())))
         df_filtered = df[(df['Total_Relationship_Count'] >= relationship_count_selection[0]) & (df['Total_Relationship_Count'] <= relationship_count_selection[1])]
