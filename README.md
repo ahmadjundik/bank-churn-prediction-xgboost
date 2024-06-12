@@ -1,6 +1,6 @@
 # Bank Customers Churn Prediction
 
-Proyek Data Saisn Kelompok 3
+Proyek Data Sains Kelompok 3
 Anggota : 
 1. Agisni Zahra Latifa       (1305213038)
 2. Ahmad Jundi Khairurrijal  (1305213037)
